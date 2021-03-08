@@ -1,0 +1,139 @@
+body {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url(./img/phonebook.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.Container {
+  width: 650px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  /* margin-top: 40px; */
+  padding: 15px;
+}
+
+.Phonebook__title {
+  font-size: 40px;
+  color: bisque;
+  font-weight: 900;
+  line-height: 1.33;
+  letter-spacing: 0.05em;
+  margin-bottom: 40px;
+}
+
+input {
+  background-color: transparent;
+  height: 20px;
+  width: 170px;
+  color: lightblue;
+  font-size: 14px;
+  font-family: cursive;
+  letter-spacing: 0.05em;
+  padding-left: 10px;
+  border: 1px solid lightblue;
+  border-radius: 6px;
+}
+
+input:focus {
+  box-shadow: 0px 3px 6px 0px rgba(173, 216, 230, 0.753);
+}
+
+.form__label {
+  margin-right: 50px;
+}
+
+.form__title {
+  display: inline-block;
+  color: lightblue;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33;
+  letter-spacing: 0.05em;
+  margin-right: 10px;
+}
+
+.form__btn {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: block;
+  margin: 30px auto 30px;
+  color: #fff;
+  border: 2px solid rgb(2, 120, 216);
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 14px 30px;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1.33;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 0 rgb(2, 120, 216);
+  transition: ease-out 0.4s;
+}
+
+.form__btn:hover {
+  box-shadow: inset 400px 0 0 0 rgb(2, 120, 216);
+}
+
+.Contacts {
+  padding-top: 20px;
+}
+
+.Contacts__title {
+  font-size: 30px;
+  color: bisque;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.Filter input {
+  width: 300px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li p {
+  font-style: oblique;
+  font-size: 16px;
+  color: bisque;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.ContactList__btn {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
+  border: 2px solid rgb(109, 7, 150);
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 6px 40px;
+  height: 35px;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 1.13;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 0 rgb(109, 7, 150);
+  transition: ease-out 0.4s;
+}
+
+.ContactList__btn:hover {
+  box-shadow: inset 0 0 0 50px rgb(109, 7, 150);
+}
