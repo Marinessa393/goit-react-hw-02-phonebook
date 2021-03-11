@@ -1,60 +1,68 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-const INITIAL_STATE = {
-  name: '',
-  number: '',
-};
-
 export default class ContactForm extends Component {
-  state = INITIAL_STATE;
+  state = {
+    name: '',
+    number: '',
+  };
 
-  handleChange = (type, e) => {
+  handleChange = e => {
+    // console.log(e);
+    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+  };
+
+  contactChek = () => {
+    const { name, number } = this.state;
     const { contacts } = this.props;
-    if (type === 'name') {
-      const contactInState = contacts.find(
-        c => c.name.toLowerCase() === e.target.value.toLowerCase(),
-      );
-      if (contactInState) {
-        alert(`${contactInState.name} is already in contacts!`);
-      }
+    const namesIsIn = contacts.reduce(
+      (acc, contact) => [...acc, contact.name],
+      [],
+    );
+    const numbersIsIn = contacts.reduce(
+      (acc, contact) => [...acc, contact.number],
+      [],
+    );
+
+    if (namesIsIn.includes(name) || numbersIsIn.includes(number)) {
+      alert(`${name}${number} is already in contacts`);
     }
-    this.setState({ [type]: e.target.value });
+
+    if (name === '' || number === '') {
+      alert('Enter all data, please');
+    }
   };
 
   handleSubmit = e => {
-    e.preventDefault();
     const { name, number } = this.state;
-    const { contacts, onAddContact } = this.props;
-    const contactInState = contacts.find(
-      contact => contact.name.toLowerCase() === name.toLowerCase(),
-    );
-    contactInState && alert(`${contactInState.name} is already in contacts!`);
-    if (!contactInState && name && number) {
-      onAddContact(name, number);
-      this.setState(INITIAL_STATE);
+
+    e.preventDefault();
+    this.setState({ name: '', number: '' });
+    if (this.contactChek()) {
       return;
     }
+
+    this.props.onSubmit(name, number);
   };
 
   render() {
-    const { name, number } = this.state;
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <label className="form__label">
           <h3 className="form__title">Name</h3>
           <input
             type="text"
-            value={name}
-            onChange={e => this.handleChange('name', e)}
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <h3 className="form__title">Phone</h3>
           <input
             type="tel"
-            value={number}
-            onChange={e => this.handleChange('number', e)}
+            name="number"
+            value={this.state.number}
+            onChange={this.handleChange}
           />
         </label>
         <button type="submit" className="form__btn">
@@ -73,5 +81,5 @@ ContactForm.propTypes = {
       number: PropTypes.string.isRequired,
     }),
   ),
-  onAddContact: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };

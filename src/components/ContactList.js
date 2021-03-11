@@ -1,21 +1,5 @@
+import ContactListItem from './ContactListItem';
 import PropTypes from 'prop-types';
-
-const ContactListItem = ({ name, number, onClickRemove }) => {
-  return (
-    <li>
-      <p>
-        {name}: {number}
-      </p>
-      <button
-        type="button"
-        className="ContactList__btn"
-        onClick={onClickRemove}
-      >
-        Delete
-      </button>
-    </li>
-  );
-};
 
 const ContactList = ({ filteredContacts, onRemove }) => {
   return (
@@ -39,7 +23,7 @@ export default ContactList;
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  onCliCkRemove: PropTypes.func.isRequired,
+  onClickRemove: PropTypes.func.isRequired,
 };
 
 ContactList.propTypes = {

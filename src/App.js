@@ -22,11 +22,9 @@ class App extends Component {
       name,
       number,
     };
-    this.setState(prevState => {
-      return {
-        contacts: [...prevState.contacts, newContact],
-      };
-    });
+    this.setState(({ contacts }) => ({
+      contacts: [newContact, ...contacts],
+    }));
   };
 
   handleChangeFilter = filter => {
@@ -55,7 +53,7 @@ class App extends Component {
         <div className="Container">
           <section title="Phonebook" className="Phonebook__section">
             <h1 className="Phonebook__title">Phonebook</h1>
-            <ContactForm contacts={contacts} onAddContact={this.addContact} />
+            <ContactForm contacts={contacts} onSubmit={this.addContact} />
           </section>
           <section title="Contacts" className="Contacts">
             <h2 className="Contacts__title">Contacts</h2>
